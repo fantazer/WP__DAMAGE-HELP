@@ -1,5 +1,6 @@
 <div class="content__right">
 
+    <? get_search_form(); ?>
 	<!--block b-list-service-->
 	<div class="list-service">
 		<div class="block-header  block-header--toggle"> Наши услуги

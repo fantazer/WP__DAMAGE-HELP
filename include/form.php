@@ -12,7 +12,7 @@
 					<a href="tel:<?php echo do_shortcode('[cvem_cv name="phone"]'); ?>"><div class="contact__phone type type--md"><?php echo do_shortcode('[cvem_cv name="phone"]'); ?></div></a>
 					<div class="contact__adress type type--md"><?php echo do_shortcode('[cvem_cv name="adres"]'); ?></div>
 					<div class="contact__email type type--md"><?php echo do_shortcode('[cvem_cv name="mail"]'); ?></div>
-					<p>Наименование: OOO "Юрь Интелис" ОГРН 1067746235160 </p>
+					<!--<p>Наименование: OOO "Юрь Интелис" ОГРН 1067746235160 </p>-->
 					<p>Вы получите точное представление о рыночной стоимости земельного участка, дома, квартиры, автомобиля или другого ценного имущества. Мы рады помочь своим клиентам. Наша оценка всегда достоверна и максимально отражает текущую стоимость продаваемого имущества.</p>
 					
 				</div>

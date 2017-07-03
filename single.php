@@ -20,6 +20,8 @@
 						if (CFS()->get('price')!='' || $category[0]->term_id==7 || $category[0]->term_id==9): ?>
 							<? include('include/panel.php') ?>
 						<?php endif ?>
+
+
 						<div class="breadcrumbs">
 							<?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' > '); ?>
 						</div>
@@ -33,7 +35,8 @@
 						   endwhile; 
 						   wp_reset_query(); 
 						?>
-						
+
+
 						
 
 						<div class="star__reting">
@@ -153,9 +156,25 @@
 					<? include('include/right-part.php') ?>
 				</div>
 			</div>
+            <? include('include/review.php') ?>
 		</div>
 	</div>
 </div>
+
+<?if (get_the_ID()==264){ ?>
+<script type="application/ld+json">
+{ "@context": "http://schema.org",
+  "@type": "Product",
+  "name": "Invisalign",
+  "aggregateRating":
+    {"@type": "AggregateRating",
+     "ratingValue": "4.9",
+     "reviewCount": "7"
+    }
+}
+</script>
+<?};?>
+
 <? include('include/positiv.php') ?>
 <!-- block section-contact-->
 <? include('include/form.php') ?>
@@ -175,6 +194,7 @@
 
 
 <!-- //////////////////////////////////// -->
+
 
 
 <?php get_footer(); ?>

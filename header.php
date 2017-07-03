@@ -12,7 +12,7 @@
 		<title>Document</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="format-detection" content="telephone=no" />
-		<meta meta="meta" name="theme-color" content="#263086" />
+		<meta meta="meta" name="theme-color" content="#383345" />
 		<link defer type="image/x-icon" rel="icon" href="favicon-M.ico">
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/vendor.css">
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css" />
