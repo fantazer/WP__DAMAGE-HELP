@@ -56,19 +56,18 @@
 					<div class="service__el">
 					<div style="background-image:url(%s);" class="service__img"></div>
 					<div class="service__info">
-						<div class="type type--md">%s</div>
+						<a href="%s"><div class="type type--md">%s</div></a>
 						<div class="service__text">%s</div>
 						<div class="service__footer">
 							<div class="service__price">от %s руб</div>
-							<a href="%s" class="service__link btn btn--sm">Подробнее</a>
 						</div>
 					</div>
 				</div>
 					',CFS()->get('img')
+				     ,get_permalink()
 					 ,get_the_title()
 					 ,wp_trim_words( get_the_content(), 12, ' ...' )
 					 ,CFS()->get('price')
-				     ,get_permalink()
 					 );
 					 endwhile; 
 					 wp_reset_query();
@@ -158,24 +157,24 @@
 		</div>
 	</div>
 	<!-- block section-client-->
-	<div class="section section-client">
+	<!--<div class="section section-client">
 		<div class="main-cont">
 			<div class="type type--lg">Наши клиенты</div>
 			<div class="client owl-carousel">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/clients/b-ico-1.png" alt="Наши клиент сбербанк " />
-				<img src="<?php echo get_template_directory_uri(); ?>/img/clients/b-ico-2.png" alt="Наши клиенты Газпромбанк" />
-				<img src="<?php echo get_template_directory_uri(); ?>/img/clients/b-ico-3.png" alt="Наши клиенты Уралсиб" />
-				<img src="<?php echo get_template_directory_uri(); ?>/img/clients/b-ico-4.png" alt="Наши клиенты Банк зенит" />
-				<img src="<?php echo get_template_directory_uri(); ?>/img/clients/b-ico-5.png" alt="Наши клиенты Траст" />
-				<img src="<?php echo get_template_directory_uri(); ?>/img/clients/b-ico-6.png" alt="Наши клиенты МТС Банк" />
-				<img src="<?php echo get_template_directory_uri(); ?>/img/clients/b-ico-7.png" alt="Наши клиенты Российский капитал" />
-				<img src="<?php echo get_template_directory_uri(); ?>/img/clients/b-ico-8.png" alt="Наши клиенты Энерготранс" />
-				<img src="<?php echo get_template_directory_uri(); ?>/img/clients/b-ico-9.png" alt="Наши клиенты СМП Банк " />
-				<img src="<?php echo get_template_directory_uri(); ?>/img/clients/b-ico-10.png" alt="Наши клиенты Банк Европейский" />
-				<img src="<?php echo get_template_directory_uri(); ?>/img/clients/b-ico-11.png" alt="Наши клиенты ВТБ" />
+				<img src="<?php /*echo get_template_directory_uri(); */?>/img/clients/b-ico-1.png" alt="Наши клиент сбербанк " />
+				<img src="<?php /*echo get_template_directory_uri(); */?>/img/clients/b-ico-2.png" alt="Наши клиенты Газпромбанк" />
+				<img src="<?php /*echo get_template_directory_uri(); */?>/img/clients/b-ico-3.png" alt="Наши клиенты Уралсиб" />
+				<img src="<?php /*echo get_template_directory_uri(); */?>/img/clients/b-ico-4.png" alt="Наши клиенты Банк зенит" />
+				<img src="<?php /*echo get_template_directory_uri(); */?>/img/clients/b-ico-5.png" alt="Наши клиенты Траст" />
+				<img src="<?php /*echo get_template_directory_uri(); */?>/img/clients/b-ico-6.png" alt="Наши клиенты МТС Банк" />
+				<img src="<?php /*echo get_template_directory_uri(); */?>/img/clients/b-ico-7.png" alt="Наши клиенты Российский капитал" />
+				<img src="<?php /*echo get_template_directory_uri(); */?>/img/clients/b-ico-8.png" alt="Наши клиенты Энерготранс" />
+				<img src="<?php /*echo get_template_directory_uri(); */?>/img/clients/b-ico-9.png" alt="Наши клиенты СМП Банк " />
+				<img src="<?php /*echo get_template_directory_uri(); */?>/img/clients/b-ico-10.png" alt="Наши клиенты Банк Европейский" />
+				<img src="<?php /*echo get_template_directory_uri(); */?>/img/clients/b-ico-11.png" alt="Наши клиенты ВТБ" />
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<!-- block section-contact-->
 	<? include('include/form.php')?>
 <?get_footer();?>

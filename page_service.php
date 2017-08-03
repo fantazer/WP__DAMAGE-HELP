@@ -29,19 +29,19 @@ Template Name: service
 								<div class="service__el">
 								<div style="background-image:url(%s);" class="service__img"></div>
 								<div class="service__info">
-									<div class="type type--md">%s</div>
+									<a href="%s"><div class="type type--md">%s</div></a>
 									<div class="service__text">%s</div>
 									<div class="service__footer">
 										<div class="service__price">%s руб</div>
-										<a href="%s" class="service__link btn btn--sm">Подробнее</a>
+										
 									</div>
 								</div>
 							</div>
 								',CFS()->get('img')
+							     ,get_permalink()
 								 ,get_the_title()
 								 ,wp_trim_words( get_the_content(), 12, ' ...' )
 								 ,CFS()->get('price')
-							     ,get_permalink()
 								 );
 								 endwhile; 
 								 wp_reset_query();

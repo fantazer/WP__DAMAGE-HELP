@@ -150,7 +150,7 @@
 						<!--block b-call end-->
 						
 						<!--block b-link-->
-						<? include('include/links.php') ?>
+						<? //include('include/links.php') ?>
 						<!--block b-link end-->
 					</div>
 					<? include('include/right-part.php') ?>
@@ -161,7 +161,7 @@
 	</div>
 </div>
 
-<?if (get_the_ID()==264){ ?>
+
 <script type="application/ld+json">
 { "@context": "http://schema.org",
   "@type": "Product",
@@ -173,7 +173,7 @@
     }
 }
 </script>
-<?};?>
+
 
 <? include('include/positiv.php') ?>
 <!-- block section-contact-->
