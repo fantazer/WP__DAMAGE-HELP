@@ -183,7 +183,7 @@
 
 <div class="main-cont">
 <!--block b-news-->
-<? include('include/news.php') ?>
+<? //include('include/news.php') ?>
 <!--block b-news end-->
 
 <!--block b-link-->

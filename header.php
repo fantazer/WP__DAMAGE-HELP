@@ -15,25 +15,13 @@
 		<meta meta="meta" name="theme-color" content="#383345" />
 		<link defer type="image/x-icon" rel="icon" href="favicon-M.ico">
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/vendor.css">
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css" />
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/add-style.css" />
-		<?if( is_home() ){?><link rel="stylesheet" href="http://webfonts.ru/import/ristrettopro.css" /><?} ?>
+<!--		<link rel="stylesheet" href="--><?php //echo get_template_directory_uri(); ?><!--/css/style.css" />-->
+		<!--<link rel="stylesheet" href="<?php /*echo get_template_directory_uri(); */?>/css/add-style.css" />-->
+
 		<!--  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic,cyrillic-ext" /> -->
-		
-		<script type="text/javascript">
-		  WebFontConfig = {
-		    google: { families: [ 'Open+Sans:400,700:latin,cyrillic-ext,cyrillic' ] }
-		  };
-		  (function() {
-		    var wf = document.createElement('script');
-		    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-		    wf.type = 'text/javascript';
-		    wf.async = 'true';
-		    var s = document.getElementsByTagName('script')[0];
-		    s.parentNode.insertBefore(wf, s);
-		  })(); </script>
+
 	
-		<?php wp_enqueue_script('jquery'); ?>
+
 		<script>(function(w,d,u){w.readyQ=[];w.bindReadyQ=[];function p(x,y){if(x=="ready"){w.bindReadyQ.push(y);}else{w.readyQ.push(x);}};var a={ready:p,bind:p};w.$=w.jQuery=function(f){if(f===d||f===u){return a}else{p(f)}}})(window,document)</script>
 		<?php wp_head(); ?>
 	</head>

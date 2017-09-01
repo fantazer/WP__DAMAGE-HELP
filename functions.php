@@ -1,9 +1,26 @@
 <?
+
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+
+
+function my_deregister_styles()    {
+   //wp_deregister_style( 'amethyst-dashicons-style' );
+   wp_deregister_style( 'dashicons' );
+}
+
+
 if (function_exists('add_theme_support')) { //Включаем меню
 add_theme_support('menus');
 }
 
+function remove_styles () {
+	wp_deregister_style ('contact-form-7');
+	wp_deregister_style ('postratings');
 
+}
+add_action ('wp_print_styles','remove_styles',100);
 
 add_theme_support( 'post-thumbnails', array( 'post' ) ); // Включаем миниатюры
 

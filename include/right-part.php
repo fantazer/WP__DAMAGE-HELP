@@ -81,7 +81,7 @@
 		</div>
 	</div> -->
 	<!--block b-question end-->
-	 <script type="text/javascript" src="//vk.com/js/api/openapi.js?126"></script>
+	<!-- <script type="text/javascript" src="//vk.com/js/api/openapi.js?126"></script>
 	
 	
 	<div id="vk_groups"></div>
@@ -91,11 +91,11 @@
 	
 	<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 	<script src="//yastatic.net/share2/share.js"></script>
-	<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter,blogger,whatsapp" data-counter=""></div>
-	<div class="awards">
-		<img src="<?php echo get_template_directory_uri(); ?>/img/awards.png" alt="">
-	</div>
-	<div class="awards">
-		<img src="<?php echo get_template_directory_uri(); ?>/img/awards-1.png" alt="">
+	<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter,blogger,whatsapp" data-counter=""></div>-->
+	<div class="awards-wrap">
+		<div class="awards" style="background-image:url('<?php echo get_template_directory_uri(); ?>/img/awards.png')">
+		</div>
+		<div class="awards" style="background-image:url('<?php echo get_template_directory_uri(); ?>/img/awards-1.png')">
+		</div>
 	</div>
 </div>
