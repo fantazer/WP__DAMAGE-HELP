@@ -205,6 +205,27 @@ Template Name: price
 								 wp_reset_query();
 							 ?>
 							</div>
+
+
+								 <div class="metro-wraper">
+							 <span class="span_h2">Оценка в городах</span>
+							  <?
+							 	$args = array(
+							 	'cat'=> 9,
+							 	'order' => 'ASC',
+							 	 'posts_per_page' => 300
+							 	);
+							 	query_posts($args);
+							 	while (have_posts()) : the_post();
+							 	printf('
+							 	<div class="metro-el"><a href="%s">%s</a></div>
+							 	',get_permalink()
+							 	,get_post_meta($post->ID,'metro',true)
+							 	);
+							 	 endwhile;
+							 	 wp_reset_query();
+							  ?>
+							 </div>
 							<!--block b-news-->
 							<? include('include/news.php') ?>
 							<!--block b-news end-->

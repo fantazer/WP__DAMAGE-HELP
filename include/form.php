@@ -3,9 +3,16 @@
 			<div class="contact__consult">Консультация бесплатно</div>
 		<div class="contact">
 			<div class="contact__form">
-			<div class="contact__time">Ответим вам черз 3 минуты</div> 
+			<div class="contact__time">Ответим вам через 3 минуты</div>
 				<div class="type type--lg">Свяжитесь с нами</div>
-				<?php echo do_shortcode('[contact-form-7 id="5" title="main-form"]'); ?>
+				<form action="javascript:void(null);" class="validate-form validate-form--contact">
+						<input type="text" name="name" placeholder="Ваше имя" id="name_form" />
+						<input type="text" name="phone" placeholder="Ваш телефон" id="phone_form" />
+						<input type="text" name="mail" placeholder="Ваша почта" id="email_form" />
+						<textarea name="" cols="30" rows="10" placeholder="Ваше сообщение" id="text"></textarea>
+						<button class="btn btn--lg">Отправить</button>
+					</form>
+				<?php //echo do_shortcode('[contact-form-7 id="5" title="main-form"]'); ?>
 			</div>
 			<div class="contact__info">
 				<div class="contact__text">

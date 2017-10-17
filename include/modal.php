@@ -15,7 +15,7 @@
 				<!--i.flaticon-down-arrow-->
 			</div>
 			<div class="modal-form">
-    			 <?php echo do_shortcode('[contact-form-7 id="1231" title="modal-form"]'); ?>
+    			 <?php //echo do_shortcode('[contact-form-7 id="1231" title="modal-form"]'); ?>
 			</div>
 		</div>
 	</div>

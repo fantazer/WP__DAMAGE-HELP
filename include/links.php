@@ -1,6 +1,6 @@
 <div class="links">
 	   <?
-	 	$args = array(
+	/* 	$args = array(
 	 	'cat'=> 3
 	 	);
 	 	$current_link = get_the_ID();
@@ -14,7 +14,7 @@
 			',get_permalink(),get_the_title());
 		}
 		 endwhile; 
-		 wp_reset_query();
+		 wp_reset_query();*/
 	 	 
 	 ?>
 </div>

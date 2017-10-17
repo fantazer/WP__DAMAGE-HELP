@@ -187,7 +187,7 @@
 <!--block b-news end-->
 
 <!--block b-link-->
-<? include('include/links-advant.php') ?>
+<? //include('include/links-advant.php') ?>
 <!--block b-link end-->
 
 </div>
