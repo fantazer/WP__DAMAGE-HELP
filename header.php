@@ -1,7 +1,7 @@
 <?php header("Last-Modified: " . get_the_modified_date('r'))?>
 <!--Include style-->
 <!DOCTYPE html>
-<html lang="en" 
+<html lang="ru"
 	<? if ( in_category(array('2','3','4','5','6','7','9')) && !is_home()) { ?>
 		itemscope itemtype="http://schema.org/Product" 
 		<? } ?> 
@@ -15,8 +15,8 @@
 		<meta meta="meta" name="theme-color" content="#383345" />
 		<link defer type="image/x-icon" rel="icon" href="favicon-M.ico">
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/vendor.css">
-<!--		<link rel="stylesheet" href="--><?php //echo get_template_directory_uri(); ?><!--/css/style.css" />-->
-		<!--<link rel="stylesheet" href="<?php /*echo get_template_directory_uri(); */?>/css/add-style.css" />-->
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css" />
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/add-style.css" />
 
 		<!--  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic,cyrillic-ext" /> -->
 

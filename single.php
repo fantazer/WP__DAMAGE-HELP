@@ -26,7 +26,12 @@
 							<?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(' > '); ?>
 						</div>
 						<!--block panel end-->
-						
+
+						<div class="sale-banner">
+							<a href="/ocenka_posle_zaliva.php">
+								<img src="<?php echo get_template_directory_uri(); ?>/img/zaliv-baner.png" alt="">
+							</a>
+						</div>
 						<h1 itemprop="name"><? the_title(); ?></h1>
 						<?
 							while (have_posts()) : the_post(); 

@@ -37,6 +37,15 @@
 
   <!-- Metrics -->
 
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-43352593-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+
+			  gtag('config', 'UA-43352593-1');
+			</script>
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -78,7 +87,7 @@
 </style>
 <!-- BEGIN JIVOSITE CODE {literal} -->
 <!--<script type='text/javascript'>
-(function(){ var widget_id = 'EDLKYRp1Of';var d=document;var w=window;function l(){
+(function(){ var widget_id = 'e5vsr9w7ET';var d=document;var w=window;function l(){
 var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>-->
 <!-- {/literal} END JIVOSITE CODE -->
 
