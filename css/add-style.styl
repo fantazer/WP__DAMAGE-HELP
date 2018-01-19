@@ -3,3 +3,63 @@ li, p
 
 .sale-banner
 	margin: 20px 0 40px 0
+
+.header--white
+	background: white
+	border-bottom 1px solid #ede8e8
+	margin-bottom: 20px
+	.header__el a
+		color black
+	.header-phone-link
+		color black
+	.header__logo
+		background-image: url("../img/logo-dark.png");
+
+.header__toggle
+	color black
+
+.header-nav-wraper
+	ul
+		list-style: none
+		padding: 0
+		margin: 0
+
+.list-service__content
+	ul
+		list-style none
+		padding: 0
+		margin: 0
+.list-service__el:before
+	content ''
+	width 5px
+	height 5px
+	border-radius 50%
+	background #7b7b7b
+	left -5px
+	top 12px
+
+strong
+	color black
+	font-style italic
+
+.footer-wraper
+	padding-bottom: 80px
+
+.b-attantion__text
+	line-height: 1.6
+
+.large-only tr td:nth-child(2)
+	width: 35%
+	p
+		color black
+		font-size: 14px
+@media only screen and (max-width: 768px)
+	.header--white
+		.header-nav
+			background: #f1f1f1
+		.shrink .header-nav a
+			color black!important
+		.header--white
+			margin-bottom: 0
+	.header__el a
+		color black

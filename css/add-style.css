@@ -5,3 +5,70 @@ p {
 .sale-banner {
   margin: 20px 0 40px 0;
 }
+.header--white {
+  background: #fff;
+  border-bottom: 1px solid #ede8e8;
+  margin-bottom: 20px;
+}
+.header--white .header__el a {
+  color: #000;
+}
+.header--white .header-phone-link {
+  color: #000;
+}
+.header--white .header__logo {
+  background-image: url("../img/logo-dark.png");
+}
+.header__toggle {
+  color: #000;
+}
+.header-nav-wraper ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list-service__content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list-service__el:before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #7b7b7b;
+  left: -5px;
+  top: 12px;
+}
+strong {
+  color: #000;
+  font-style: italic;
+}
+.footer-wraper {
+  padding-bottom: 80px;
+}
+.b-attantion__text {
+  line-height: 1.6;
+}
+.large-only tr td:nth-child(2) {
+  width: 35%;
+}
+.large-only tr td:nth-child(2) p {
+  color: #000;
+  font-size: 14px;
+}
+@media only screen and (max-width: 768px) {
+  .header--white .header-nav {
+    background: #f1f1f1;
+  }
+  .header--white .shrink .header-nav a {
+    color: #000 !important;
+  }
+  .header--white .header--white {
+    margin-bottom: 0;
+  }
+  .header__el a {
+    color: #000;
+  }
+}

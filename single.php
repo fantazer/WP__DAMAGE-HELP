@@ -12,7 +12,7 @@
 			<!--block b-slider end-->
 
 			<div class="content__info">
-				<div class="content__left">
+				<section class="content__left">
 
 						<!--block panel-->
 						<?php 
@@ -27,21 +27,27 @@
 						</div>
 						<!--block panel end-->
 
-						<div class="sale-banner">
-							<a href="/ocenka_posle_zaliva.php">
-								<img src="<?php echo get_template_directory_uri(); ?>/img/zaliv-baner.png" alt="">
-							</a>
-						</div>
-						<h1 itemprop="name"><? the_title(); ?></h1>
 						<?
-							while (have_posts()) : the_post(); 
-							printf('<p>%s</p> ',the_content());
+						$categories = get_the_category();
+						$category_id = $categories[0]->cat_ID;
+						if($category_id == 11) {?>
+					<!--	<div class="sale-banner">
 
-						   endwhile; 
-						   wp_reset_query(); 
-						?>
+								<img src="<?php /*echo get_template_directory_uri(); */?>/img/zaliv-baner.png" alt="" class=" get-modal">
+							</a>
+						</div>-->
+						<? } ?>
+						<article>
+						<h1 itemprop="name"><? the_title(); ?></h1>
+							<?
+								while (have_posts()) : the_post();
+								printf('<p>%s</p> ',the_content());
 
+							   endwhile;
+							   wp_reset_query();
+							?>
 
+						</article>
 						
 
 						<div class="star__reting">
@@ -153,11 +159,11 @@
 						<!--block b-call-->
 						<? include('include/call.php') ?>
 						<!--block b-call end-->
-						
+
 						<!--block b-link-->
 						<? //include('include/links.php') ?>
 						<!--block b-link end-->
-					</div>
+					</section>
 					<? include('include/right-part.php') ?>
 				</div>
 			</div>

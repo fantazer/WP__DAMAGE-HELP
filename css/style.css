@@ -350,11 +350,6 @@ h4,
 .shrink .header-nav a {
   color: #111 !important;
 }
-@media only screen and (max-width: 768px) {
-  .shrink .header-nav a {
-    color: #fff !important;
-  }
-}
 .shrink .header__cont {
   color: #111;
 }
@@ -2584,7 +2579,7 @@ table.table_price p {
     display: none;
     width: 100%;
     position: absolute;
-    background: #a22525;
+    background: #f1f1f1;
     top: 100%;
     left: 0px;
   }
@@ -2594,7 +2589,11 @@ table.table_price p {
     display: block !important;
   }
 }
-.header-nav-wraper {
+.header-nav-wraper ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2609,7 +2608,7 @@ table.table_price p {
           align-items: center;
 }
 @media only screen and (max-width: 768px) {
-  .header-nav-wraper {
+  .header-nav-wraper ul {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
@@ -2620,7 +2619,10 @@ table.table_price p {
     width: 100%;
     text-align: center;
     padding: 10px;
-    color: #fff;
+    color: #111;
+  }
+  .header__el a {
+    color: #111;
   }
 }
 .header__el a {
@@ -2655,7 +2657,6 @@ table.table_price p {
 }
 .header__toggle {
   display: none;
-  color: #fff;
   font-size: 22px;
 }
 @media only screen and (max-width: 768px) {

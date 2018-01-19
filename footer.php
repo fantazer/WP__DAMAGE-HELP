@@ -10,7 +10,7 @@
     <span itemprop="telephone" content="8(499)391-84-10"></span>
     <span itemprop="email" content="3918410@BK.RU"></span>
   </div>
-  <div class="footer">
+  <footer class="footer">
     <div class="footer-wraper">
       <div class="footer__nav">
         <div class="main-cont">
@@ -28,7 +28,7 @@
       <a href="" class="footer__adress"><?php echo do_shortcode('[cvem_cv name="adres"]'); ?></a>
       <a href="" class="footer__phone"> <?php echo do_shortcode('[cvem_cv name="phone"]'); ?></a>
     </div>
-  </div>
+  </footer>
 
 
   <!--block b-slider-->

@@ -36,26 +36,28 @@
 		<div class="main-section">
 			<!-- block header-->
 			<!-- Header for main-page -->
-			<div class="header header-main">
+			<header class="header header-main">
 				<div class="main-cont">
 					<div class="header-wraper">
 						<a href="/" class="header__logo">
 						</a>
 						<div class="header-nav">
-							<div class="header-nav-wraper">
-								<div class="header__el">
-									<a href="/">Главная</a>
-								</div>
-								<div class="header__el">
-									<a href="/service.php">Услуги </a>
-								</div>
-								<div class="header__el">
-									<a href="/price.php">Цены</a>
-								</div>
-								<div class="header__el">
-									<a href="/contact_form.php">Контакты</a>
-								</div>
-							</div>
+							<nav class="header-nav-wraper">
+								<ul>
+									<li class="header__el">
+										<a href="/">Главная</a>
+									</li>
+									<li class="header__el">
+										<a href="/service.php">Услуги </a>
+									</li>
+									<li class="header__el">
+										<a href="/price.php">Цены</a>
+									</li>
+									<li class="header__el">
+										<a href="/contact_form.php">Контакты</a>
+									</li>
+								</ul>
+							</nav>
 						</div>
 						<div class="header__cont"><?php echo do_shortcode('[cvem_cv name="phone"]'); ?>
 							<div class="header__toggle">
@@ -64,7 +66,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</header>
 			<div class="main-baner">
 				<div class="main-baner__img">
 					<img src="<?php echo get_template_directory_uri(); ?>/img/main-baner.png" alt="Независимая оценка" />
@@ -77,26 +79,28 @@
 		</div>
 	<?}else{?>
 	<!-- Header for page -->
-	<div class="header">
+	<header class="header header--white">
 		<div class="main-cont">
 			<div class="header-wraper">
 				<a href="/" class="header__logo">
 				</a>
 				<div class="header-nav">
-					<div class="header-nav-wraper">
-						<div class="header__el">
-							<a href="/">Главная</a>
-						</div>
-						<div class="header__el">
-							<a href="/service.php">Услуги </a>
-						</div>
-						<div class="header__el">
-							<a href="/price.php">Цены</a>
-						</div>
-						<div class="header__el">
-							<a href="/contact_form.php">Контакты</a>
-						</div>
-					</div>
+					<nav class="header-nav-wraper">
+						<ul>
+							<li class="header__el">
+								<a href="/">Главная</a>
+							</li>
+							<li class="header__el">
+								<a href="/service.php">Услуги </a>
+							</li>
+							<li class="header__el">
+								<a href="/price.php">Цены</a>
+							</li>
+							<li class="header__el">
+								<a href="/contact_form.php">Контакты</a>
+							</li>
+						</ul>
+					</nav>
 				</div>
 				<a href="/contact_form/" class="header-phone-link"><div class="header__cont"><?php echo do_shortcode('[cvem_cv name="phone"]'); ?></a>
 					<div class="header__toggle">
@@ -104,7 +108,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</header>
 	</div>
 	<? } ?>
 

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://G:/Web/DAMAGE/.idea/DAMAGE.iml" filepath="G:/Web/DAMAGE/.idea/DAMAGE.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/damage-help.iml" filepath="$PROJECT_DIR$/.idea/damage-help.iml" />
     </modules>
   </component>

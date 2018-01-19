@@ -110,9 +110,9 @@
 						<p> Согласовав с клиентом время, специалист выезжает по указанному адресу и производит необходимые для оценки действия.</p>
 					</div>
 				</div>
-				<div class="how-work__img">
-					<img src="<?php echo get_template_directory_uri(); ?>/img/work-baner.png" alt="" />
-				</div>
+				<!--<div class="how-work__img">
+					<img src="<?php /*echo get_template_directory_uri(); */?>/img/work-baner.png" alt="" />
+				</div>-->
 				<div class="how-work__col">
 					<div class="how-work__el">
 						<div class="type type--sm">Проведение оценки.</div>

@@ -1,4 +1,4 @@
-<div class="content__right">
+<section class="content__right">
 
     <? get_search_form(); ?>
 	<!--block b-list-service-->
@@ -6,7 +6,8 @@
 		<div class="block-header  block-header--toggle"> Наши услуги
 			<i class="icon-bars"></i>
 		</div>
-		<div class="block-content list-service__content">
+		<nav class="block-content list-service__content">
+			<ul>
 			 <?
 				$args = array(
 				'cat'=> 2,
@@ -16,13 +17,16 @@
 				while (have_posts()) : the_post();
 				if(get_the_ID() != $current_post){
 					printf('
-					<a href="%s" class="list-service__el">%s</a>
+						<li>
+							<a href="%s" class="list-service__el">%s</a>
+						</li>
 					',get_permalink(),get_the_title());
 				}
 				 endwhile; 
 				 wp_reset_query();
 			 ?>
-		</div>
+			 </ul>
+		</nav>
 	</div>
 	<!--block b-list-service end-->
 
@@ -51,36 +55,7 @@
 		</div>
 	</div>
 	<!--block b-adv end-->
-	<!--block b-question-->
-	<!-- <div class="questions">
-		<div class="block-header  block-header--toggle"> Частые вопросы</div>
-		<div class="block-content">
-			<div class="questions--wraper owl-carousel">
-				<div class="questions--el">
-					<div class="type type--md">Как правильно провести оценку</div>
-					<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis vitae quibusdam eius nihil dolor consectetur ducimus asperiores velit, quia temporibus, quae neque quo officia fuga aut ea explicabo. Magni, placeat?</p>
-					<a href="#">Подробнее</a>
-				</div>
-				<div class="questions--el">
-					<div class="type type--md">Как правильно провести оценку</div>
-					<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis vitae quibusdam eius nihil dolor consectetur ducimus asperiores velit, quia temporibus, quae neque quo officia fuga aut ea explicabo. Magni, placeat?</p>
-					<a href="#">Подробнее</a>
-				</div>
-				<div class="questions--el">
-					<div class="type type--md">Как правильно провести оценку</div>
-					<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis vitae quibusdam eius nihil dolor consectetur ducimus asperiores velit, quia temporibus, quae neque quo officia fuga aut ea explicabo. Magni, placeat?</p>
-					<a href="#">Подробнее</a>
-				</div>
-				<div class="questions--el">
-					<div class="type type--md">Как правильно провести оценку</div>
-					<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis vitae quibusdam eius nihil dolor consectetur ducimus asperiores velit, quia temporibus, quae neque quo officia fuga aut ea explicabo. Magni, placeat?</p>
-					<a href="#">Подробнее</a>
-				</div>
-			</div>
-			<a href="#" class="btn btn--md btn--red">Бесплатная консультация</a>
-		</div>
-	</div> -->
-	<!--block b-question end-->
+
 	<!-- <script type="text/javascript" src="//vk.com/js/api/openapi.js?126"></script>
 	
 	
@@ -98,4 +73,4 @@
 		<div class="awards" style="background-image:url('<?php echo get_template_directory_uri(); ?>/img/awards-1.png')">
 		</div>
 	</div>
-</div>
+</section>
