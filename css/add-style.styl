@@ -1,19 +1,34 @@
+$blue = #0063B0
+$red = #EE3F58
+body
+	font-family: 'Open Sans', sans-serif!important
 li, p
 	line-height: 1.6
+	font-size: 14px
+.section
+	padding: 40px 0
 
+.title--type
+	font-size: 28px
+	margin-bottom: 40px
+	margin-top: 0
+	padding-top: 0
+	font-weight:700
+
+.title--mark
+	color $blue
 .sale-banner
 	margin: 20px 0 40px 0
 
 .header--white
 	background: white
-	border-bottom 1px solid #ede8e8
-	margin-bottom: 20px
 	.header__el a
 		color black
 	.header-phone-link
 		color black
-	.header__logo
-		background-image: url("../img/logo-dark.png");
+
+.header-phone-link
+	font-size: 28px
 
 .header__toggle
 	color black
@@ -23,7 +38,8 @@ li, p
 		list-style: none
 		padding: 0
 		margin: 0
-
+	li
+		margin-bottom: 0
 .list-service__content
 	ul
 		list-style none
@@ -45,15 +61,224 @@ strong
 .footer-wraper
 	padding-bottom: 80px
 
-.b-attantion__text
-	line-height: 1.6
-
 .large-only tr td:nth-child(2)
 	width: 35%
 	p
 		color black
 		font-size: 14px
+
+.header
+	background: white
+
+.navigation
+	background: $blue
+	ul
+		list-style: none
+		display: flex
+		padding: 0
+		margin: 0
+		li
+			margin: 0
+			padding: 0
+		a
+			color white
+			text-transform: uppercase
+			padding: 15px 20px
+			display: inline-block
+			font-size: 14px
+.banner-main
+	height: 500px
+	background-image: url("../img/main.jpg")
+	width: 100%
+	background-size: cover
+	background-repeat: no-repeat
+	.main-cont
+		height: 100%
+.banner-main__wrap
+	display: flex
+	height: 100%
+.banner-main__wrap-info
+	width: 50%
+	margin-left: auto
+	height: 100%
+	display: flex
+	justify-content: center
+	flex-flow column
+.banner-main__wrap-text
+	font-size:56px
+	line-height: 1
+	margin-bottom: 20px
+	span
+		font-weight:700
+
+.b-service
+	display: grid
+	grid-template-columns: repeat(3, auto)
+	grid-gap: 20px
+.b-service__el
+	padding: 30px
+	background: white
+	ul
+		padding-left: 20px
+		a
+			color #2e2e2e
+			position: relative
+			&:before
+				content ""
+				position: absolute
+				bottom -2px
+				left 0
+				width: 100%
+				height: 1px
+				background: #bebebe
+.b-service__el-title
+	font-size: 18px
+	margin-bottom: 20px
+	color $blue
+	font-weight:700
+
+.positive
+	background: white
+.serch-btn
+	background: $blue
+.panel__title
+	color $blue
+
+.table_price
+	margin: 30px 0
+
+.calc__icon
+	color $blue
+
+.sytle-input-element
+	border 2px solid $red
+
+.sytle-input:checked + .sytle-input-element
+	background: $red
+
+.adv__el
+	i
+		color $blue
+
+.b-attantion
+	box-shadow none
+	border 1px solid #efefef
+	margin: 20px 0
+	padding: 0 20px
+
+.b-attantion__text
+	font-size: 14px
+	font-style: normal
+
+.b-attantion__icon
+	color $red
+
+.panel__get
+	background: $blue!important
+
+.calc-block__get
+	background: $red
+
+.call__free
+	color $red
+
+.title--mid
+	text-align: center
+
+.section-company
+	padding: 0!important
+
+.how-work__el-title
+	color $blue
+	font-size: 18px
+
+.how-work
+	display: flex
+	flex-wrap wrap
+	justify-content: space-between
+	align-items: flex-start
+
+.how-work__el
+	width: 32%
+	display: flex
+	justify-content: space-between
+.how-work__el-numb
+	width: 80px
+	height: 80px
+	font-size: 20px
+	border: 1px solid $blue
+	border-radius: 50%
+	display: flex
+	justify-content: center
+	align-items: center
+	color $blue
+
+.how-work__el-info
+	width:calc(100% - 100px)
+
+.section-work
+	padding: 80px 0
+
+.section-get__content
+	.type
+		color white
+	.btn
+		border 1px solid white
+		color white
+
+.section-get__subtitle
+	margin-bottom: 30px
+	color white!important
+
+.section__contact
+	background: #f3f3f3
+
+.contact__form
+	input,textarea
+		border 1px solid #edeaea
+
+
+.b-contact-img
+	width: 100%
+	padding: 40%
+	background-image: url("../img/contact_girl.png")
+	background-size: contain
+	background-repeat: no-repeat
+
+.lazyYT-container
+	radial-gradient(#f9f9f9 10px, #0063b0) !important
+	border-right:
+	border-raduis 10px
+	background: #e9e9e9!important
+
+.contact__phone
+	font-weight:700
+
+article
+	.positive
+		padding: 0
+@media only screen and (max-width: 1280px)
+	.banner-main
+		background-position 30%
+
+@media only screen and (max-width: 1024px)
+	.how-work__el
+		width: 48%
+	.b-service
+		grid-template-columns: repeat(2, auto)
+		grid-gap: 20px
+
 @media only screen and (max-width: 768px)
+	.section-work
+		padding: 30px 0
+	.company__lg-title
+		font-size: 24px
+	.b-service__el
+		padding: 15px
+		li
+			font-size: 12px
+	.b-service
+		grid-template-columns: repeat(1, auto)
 	.header--white
 		.header-nav
 			background: #f1f1f1
@@ -63,3 +288,26 @@ strong
 			margin-bottom: 0
 	.header__el a
 		color black
+	.b-attantion
+		padding: 20px
+	.b-contact-img
+		display: none
+	.banner-main
+		display: none
+	.header-phone-link
+		margin-left: auto
+		margin-right: 20px
+		font-size: 15px
+		font-weight: 700
+	.header
+		border-bottom 1px solid #efefef
+@media only screen and (max-width: 640px)
+	.how-work__el
+		width: 100%
+		flex-wrap: wrap;
+		flex-flow column;
+		align-items: center
+	.how-work__el-numb
+		margin-bottom: 20px
+	.how-work__el-info
+		width: 100%

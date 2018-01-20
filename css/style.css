@@ -16,6 +16,22 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 // HTML
 <i class="icon icon-home"></i>
 */
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/OpenSans-Regular.eot");
+  src: url("../fonts/OpenSans-Regular.eot?#iefix") format('embedded-opentype'), url("../fonts/OpenSans-Regular.woff") format('woff'), url("../fonts/OpenSans-Regular.ttf") format('truetype'), url("../fonts/OpenSans-Regular.svg#Bebas") format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/OpenSans-Bold.eot");
+  src: url("../fonts/OpenSans-Bold.eot?#iefix") format('embedded-opentype'), url("../fonts/OpenSans-Bold.woff") format('woff'), url("../fonts/OpenSans-Bold.ttf") format('truetype'), url("../fonts/OpenSans-Bold.svg#Bebas") format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
 .icon-IMG_11032016_160446 {
   background-image: url(../img/sprite.png);
   background-position: 0px 0px;
@@ -249,14 +265,19 @@ h4,
   margin-bottom: 20px;
   -webkit-transition: all 0.4s;
           transition: all 0.4s;
-  border: 1px solid #c81e58;
-  color: #c81e58;
+  border: 1px solid #0063b0;
+  color: white;
+  border-radius:20px;
+  font-size: 15px!important;
+  background:#0063b0 ;
+  min-width:200px;
+  text-align: center;
 }
 .btn:hover,
 .btn--sm:hover,
 .btn--md:hover,
 .btn--lg:hover {
-  background: #9c1744;
+  background: #033c68;
   color: #fff;
 }
 .btn--sm {
@@ -272,7 +293,7 @@ h4,
   padding: 10px 30px;
 }
 .btn--red {
-  background: #c81e58;
+  background: #0063b0;
   color: #fff;
 }
 .btn--red:hover {
@@ -345,7 +366,7 @@ h4,
   color: #111;
 }
 .shrink .header__logo {
-  background-image: url("../img/logo-dark.png");
+  background-image: url("../img/logo-rev.jpg");
 }
 .shrink .header-nav a {
   color: #111 !important;
@@ -359,7 +380,7 @@ h4,
   }
 }
 .shrink .header__logo {
-  color: #c81e58;
+  color: #0063b0;
 }
 .shrink .header__toggle {
   color: #111;
@@ -419,7 +440,7 @@ button {
   font-size: 20px;
   padding: 10px 30px;
   background: #fff;
-  color: #c81e58;
+  color: #0063b0;
 }
 button:hover {
   background: #9c1744;
@@ -691,7 +712,7 @@ table tbody tr:hover th {
 }
 .table_price tr td:nth-child(2) p {
   font-weight: 700;
-  color: #c81e58;
+  color: #0063b0;
 }
 .table_price th,
 .table_price td {
@@ -1092,7 +1113,7 @@ table tbody tr:hover th {
   color: #0c4b8e;
 }
 strong {
-  color: #c81e58;
+  color: #0063b0;
 }
 .content__left li {
   margin-bottom: 10px;
@@ -1243,8 +1264,7 @@ strong {
   height: 100%;
 }
 .lazyYT-container {
-  background: -webkit-radial-gradient(#95c1a9 10px, #4caf50) !important;
-  background: radial-gradient(#95c1a9 10px, #4caf50) !important;
+  background: #e9e9e9!important;
   height: 100% !important;
   padding: 0 !important;
 }
@@ -1319,7 +1339,7 @@ strong {
 .validate-form input,
 .validate-form textarea {
   margin-bottom: 20px !important;
-  padding: 20px !important;
+  padding: 15px 20px !important;
 }
 label.error {
   margin-bottom: 20px;
@@ -1697,6 +1717,7 @@ ul {
   background: #383345;
   color: #fff;
 }
+
 .item-found {
   display: block;
   border-bottom: 1px solid #dddae2;
@@ -1817,11 +1838,10 @@ table.table_price p {
       -ms-flex-align: center;
           align-items: center;
   background: #fff;
-  -webkit-box-shadow: 0px 3px 8px #e3e3e3;
-          box-shadow: 0px 3px 8px #e3e3e3;
   margin: 50px 0;
   padding: 20px;
 }
+
 @media only screen and (max-width: 768px) {
   .b-attantion {
     -webkit-flex-wrap: wrap;
@@ -1832,7 +1852,7 @@ table.table_price p {
 }
 .b-attantion__icon {
   padding: 30px;
-  color: #c81e58;
+  color: #0063b0;
 }
 @media only screen and (max-width: 768px) {
   .b-attantion__icon {
@@ -1931,7 +1951,7 @@ table.table_price p {
   text-transform: uppercase;
   font-size: 20px;
   color: #fff;
-  background: #c81e58;
+  background: #0063b0;
   text-align: center;
   padding-bottom: 0px;
   padding: 10px;
@@ -2053,7 +2073,7 @@ table.table_price p {
 }
 .call__free {
   font-weight: 700;
-  color: #c81e58;
+  color: #0063b0;
 }
 .work-teml {
   display: -webkit-box;
@@ -2148,7 +2168,7 @@ table.table_price p {
   content: " > ";
   position: absolute;
   left: -5px;
-  color: #c81e58;
+  color: #0063b0;
 }
 .list-service {
   -webkit-box-shadow: 0px 0px 10px #e8e2e2;
@@ -2237,7 +2257,7 @@ table.table_price p {
 }
 .positive .span_h2 {
   margin-bottom: 20px;
-  color: #fff;
+  color: black;
 }
 .positive-wraper {
   -webkit-flex-wrap: wrap;
@@ -2273,7 +2293,7 @@ table.table_price p {
   display: flex;
   margin-bottom: 40px;
   padding: 20px;
-  border: 1px solid #fff;
+  border: 1px solid #e0e0e0;
   width: 48%;
 }
 @media only screen and (max-width: 768px) {
@@ -2301,7 +2321,7 @@ table.table_price p {
 }
 .positive-el__icon {
   margin-right: 20px;
-  color: #fff;
+  color: #0063b0;
 }
 @media only screen and (max-width: 768px) {
   .positive-el__icon {
@@ -2311,7 +2331,7 @@ table.table_price p {
 .positive-el__title {
   margin-bottom: 10px;
   text-transform: uppercase;
-  color: #fff;
+  color: #171616;
   font-size: 18px;
 }
 @media only screen and (max-width: 768px) {
@@ -2322,7 +2342,7 @@ table.table_price p {
   }
 }
 .positive-el__text {
-  color: #fff;
+  color: #5d5d5d;
 }
 @media only screen and (max-width: 768px) {
   .positive-el__text {
@@ -2438,7 +2458,7 @@ table.table_price p {
 }
 .slider__text-md {
   text-transform: uppercase;
-  color: #c81e58;
+  color: #0063b0;
   font-size: 22px;
 }
 @media only screen and (max-width: 768px) {
@@ -2525,7 +2545,7 @@ table.table_price p {
   color: #fff;
 }
 .footer__nav {
-  background: #383345;
+  background: #0063b0;
   padding: 10px;
   width: 100%;
   margin-bottom: 10px;
@@ -2534,7 +2554,6 @@ table.table_price p {
   top: 0;
   left: 0;
   width: 100%;
-  background: #383345;
   position: relative;
   z-index: 400;
 }
@@ -2544,7 +2563,7 @@ table.table_price p {
 }
 .header__logo {
   height: 60px;
-  background-image: url("../img/logo-light.png");
+  background-image: url("../img/logo-rev.jpg");
   width: 250px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -2628,7 +2647,6 @@ table.table_price p {
 .header__el a {
   text-transform: uppercase;
   font-size: 16px;
-  color: #fff;
 }
 .header__cont {
   font-size: 26px;
@@ -2676,7 +2694,7 @@ table.table_price p {
   width: 100%;
   height: 100vh;
   position: relative;
-  background: #c81e58;
+  background: #0063b0;
   background: -webkit-radial-gradient(#8892c0 10px, #485096);
   background: radial-gradient(#8892c0 10px, #485096);
   background-size: cover;
@@ -3006,7 +3024,7 @@ background white .panel__info {
           order: 1;
   width: 48%;
   padding: 10px;
-  background: #f0f0f0;
+  background: white;
   padding: 40px;
 }
 @media only screen and (max-width: 768px) {
@@ -3035,8 +3053,8 @@ background white .panel__info {
 }
 .contact__text {
   padding: 30px;
-  background: #f0f0f0;
-  margin-bottom: 20px;
+  background: white;
+  margin-bottom: 0px;
 }
 @media only screen and (max-width: 768px) {
   .contact__text p {
@@ -3078,7 +3096,7 @@ background white .panel__info {
   text-transform: uppercase;
   font-size: 28px;
   color: #fff;
-  background: #c81e58;
+  background: #0063b0;
   text-align: center;
   padding-bottom: 0px;
   padding: 25px;
@@ -3092,7 +3110,7 @@ background white .panel__info {
   text-transform: uppercase;
   font-size: 28px;
   color: #fff;
-  background: #c81e58;
+  background: #0063b0;
   text-align: center;
   padding-bottom: 0px;
   padding: 10px;
@@ -3122,14 +3140,12 @@ background white .panel__info {
 .section-get {
   position: relative;
   background-position: fixed;
-  background-image: url("../img/image-3.jpg");
   background-size: cover;
   background-attachment: fixed;
+  background: #0063b0;
 }
 @media only screen and (max-width: 768px) {
-  .section-get {
-    background: #f6f6f6;
-  }
+
 }
 .section-get__content {
   position: relative;
@@ -3393,8 +3409,8 @@ background white .panel__info {
   }
 }
 .how-work__el {
-  margin-bottom: 40px;
-  text-align: center;
+  margin-bottom: 20px;
+  text-align: left;
 }
 @media only screen and (max-width: 768px) {
   .how-work__el {

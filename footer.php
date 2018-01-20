@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="footer__logo">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/logo-dark.png" alt="Логотип независимая оценка" />
+        <img src="<?php echo get_template_directory_uri(); ?>/img/logo-rev.jpg" alt="Логотип независимая оценка" />
       </div>
       <a href="" class="footer__adress"><?php echo do_shortcode('[cvem_cv name="adres"]'); ?></a>
       <a href="" class="footer__phone"> <?php echo do_shortcode('[cvem_cv name="phone"]'); ?></a>

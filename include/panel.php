@@ -85,7 +85,7 @@
 			<span>руб</span>
 		</div>
 	</div>
-	<a href="contact_form.php" class="panel__el panel__get get-modal" onclick="yaCounter22674784.reachGoal('GET-ORDER'); return true;">Заказать</a>
+	<div class="panel__el panel__get get-modal" onclick="yaCounter22674784.reachGoal('GET-ORDER'); return true;">Заказать</div>
 </div>
 
 <? } ?>

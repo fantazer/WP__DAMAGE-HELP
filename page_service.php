@@ -7,60 +7,37 @@ Template Name: service
 <?php get_header(); ?>
 
 
-<div class="content">
-	<div class="main-cont">
-		<div class="content__wraper">
-			<!--block b-slider-->
-			<? //include('include/main-slider.php') ?>
-			<!--block b-slider end-->
-			<div class="content__info">
-
-						<h1><? the_title(); ?></h1>
-						<div class="service__wraper">
-							
-							 <?
-								$args = array(
-								'cat'=> 2
-							
-								);
-								query_posts($args);
-								while (have_posts()) : the_post(); 
-								printf('
-								<div class="service__el">
-								<div style="background-image:url(%s);" class="service__img"></div>
-								<div class="service__info">
-									<a href="%s"><div class="type type--md">%s</div></a>
-									<div class="service__text">%s</div>
-									<div class="service__footer">
-										<div class="service__price">%s руб</div>
-										
-									</div>
-								</div>
-							</div>
-								',CFS()->get('img')
-							     ,get_permalink()
-								 ,get_the_title()
-								 ,wp_trim_words( get_the_content(), 12, ' ...' )
-								 ,CFS()->get('price')
-								 );
-								 endwhile; 
-								 wp_reset_query();
-							 ?>
-
-						</div>
-
-						<!--block b-news-->
-						<? include('include/news.php') ?>
-						<!--block b-news end-->
+<div class="section section-service">
+		<div class="main-cont">
+			<h1 class="title--type title--mid">Независимая оценка Залива Пожара ДТП. </h1>
+			<div class="b-service">
+        <?
+        //$listCat = array(13, 16, 12,11,10,15,17);
+        $listCat = array(11,10,17,16,10,13,12,15);
+        foreach ($listCat as $key => $value){
+        ?>
+          <div class="b-service__el">
+						<div class="b-service__el-title"> <? echo get_cat_name($listCat[$key]); ?> </div>
+						<ul>
+							<?
+			        $args = array(
+			          'cat' => $listCat[$key]
+			        );
+			        ?>
+			          <? query_posts($args); ?>
+			          <? while (have_posts()) : the_post(); ?>
+									<!-- can write -->
+									<li class="b-service__el-text">
+										<a href="	<?= get_permalink(); ?>"><?= get_the_title(); ?></a></li>
+									<!-- can write -->
+			          <? endwhile; ?>
+			          <? wp_reset_query(); ?>
+						</ul>
+					</div>
+      <? } ?>
+				</div>
 			</div>
-					
-			<!--block b-link-->
-			<? //include('include/links.php') ?>
-			<!--block b-link end-->
-
-		</div>
 	</div>
-</div>
 
 <!-- block section-contact-->
 <? include('include/form.php') ?>
