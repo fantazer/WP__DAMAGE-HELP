@@ -1,0 +1,699 @@
+//rupture
+base-font-size ?= 16px
+rasterise-media-queries ?= false
+
+rupture = {
+  rasterise-media-queries: rasterise-media-queries
+  mobile-cutoff: 400px
+  desktop-cutoff: 1050px
+  hd-cutoff: 1800px
+  enable-em-breakpoints: false
+  base-font-size: base-font-size
+  anti-overlap: false
+  density-queries: 'dppx' 'webkit' 'moz' 'dpi'
+  retina-density: 1.5
+  use-device-width: false
+}
+rupture.scale = 0 (rupture.mobile-cutoff) 600px 800px (rupture.desktop-cutoff) (rupture.hd-cutoff)
+rupture.scale-names = 'xs' 's' 'm' 'l' 'xl' 'hd'
+
+-is-string(val)
+  if typeof(val) is not 'unit'
+    if val is a 'string' or val is a 'ident'
+      true
+    else
+      false
+  else
+    false
+
+-get-scale-number(scale-name)
+  for list-item, i in rupture.scale-names
+    if list-item is scale-name
+      return i + 1
+  return false
+
+-convert-to(to-unit, value, context = rupture.base-font-size)
+  from-unit = unit(value)
+  return value if to-unit is from-unit
+  if to-unit in ('em' 'rem')
+    return value if from-unit in ('em' 'rem')
+    return unit((value / context), to-unit)
+  if to-unit is 'px'
+    return unit((value * context), 'px')
+
+-on-scale(n)
+  return unit(n) is ''
+
+-larger-than-scale(n)
+  return (n > (length(rupture.scale) - 1)) and -on-scale(n)
+
+-is-zero(n)
+  return n is 0
+
+-overlap-shift(anti-overlap, n)
+  shift-unit = unit(n)
+  anti-overlap = 0px unless anti-overlap
+  anti-overlap = 1px if anti-overlap is true
+  if length(anti-overlap) is 1
+    return -convert-to(shift-unit, anti-overlap)
+  for val in anti-overlap
+    return val if unit(val) is shift-unit
+
+-adjust-overlap(anti-overlap, n, side = 'min')
+  -shift = -overlap-shift(anti-overlap, n)
+  if (side is 'min' and -shift > 0) or (side is 'max' and -shift < 0)
+    n = n + -shift
+  return n
+
+-is-positive(n)
+  return n >= 0
+
+-density-queries(density)
+  if typeof(density) is not 'unit'
+    if not -is-string(density)
+      density = '%s' % density
+  density = rupture.retina-density if density is 'retina'
+  queries = ()
+  for query in rupture.density-queries
+    if query is 'webkit'
+      push(queries, '(-webkit-min-device-pixel-ratio: %s)' % (density))
+    else if query is 'moz'
+      push(queries, '(min--moz-device-pixel-ratio: %s)' % (density))
+    else if query is 'o'
+      push(queries, '(-o-min-device-pixel-ratio: %s/1)' % (density))
+    else if query is 'ratio'
+      push(queries, '(min-device-pixel-ratio: %s)' % (density))
+    else if query is 'dpi'
+      if -is-string(density)
+        density=convert(density)
+      push(queries, '(min-resolution: %sdpi)' % (round(density * 96, 1)))
+    else if query is 'dppx'
+      push(queries, '(min-resolution: %sdppx)' % (density))
+  return queries
+
+create-fallback-class(selected, class)
+  /{'' + class + ' ' + selected}
+    {block}
+
+// +between(min, max)
+// usage (scale can be mixed with custom values):
+//   - +between(1, 3) scale:scale
+//   - +between(0, 3) 0 width:scale
+//   - +between(200px, 500px) custom:custom
+//   - +between(0, 300px) 0 width:custom
+//   - +between(1, 300px) scale:custom
+//   - +between(200px, 4) custom:scale
+
+between(min, max, anti-overlap = rupture.anti-overlap, density = null, orientation = null, use-device-width = rupture.use-device-width, fallback-class = null)
+  selected = selector()
+
+  if -is-string(orientation)
+    orientation = convert(orientation)
+  if -is-string(density)
+    density = convert(density)
+  if -is-string(min)
+    min = -get-scale-number(min)
+  if -is-string(max)
+    max = -get-scale-number(max)
+
+  -min = rupture.scale[min - 1] unless -is-zero(min) or (not -on-scale(min))
+  -max = rupture.scale[max] unless not -on-scale(max)
+  -min ?= min
+  -max ?= max
+
+  if (rupture.rasterise-media-queries)
+    if not (density or -max or orientation)
+      {block}
+  else
+    condition = 'only screen'
+    use-device-width = use-device-width ? 'device-' : ''
+    unless -min is 0
+      -min = -convert-to('em', -min) if rupture.enable-em-breakpoints
+      -min = -adjust-overlap(anti-overlap, -min, side: 'min')
+      condition = condition + ' and (min-' + use-device-width + 'width: %s)' % (-min)
+    unless -larger-than-scale(max)
+      -max = -convert-to('em', -max) if rupture.enable-em-breakpoints
+      -max = -adjust-overlap(anti-overlap, -max, side: 'max')
+      condition = condition + ' and (max-' + use-device-width + 'width: %s)' % (-max)
+    if orientation
+      condition = condition + ' and (orientation: %s)' % (orientation)
+    if density
+      conditions = ()
+      for query in -density-queries(density)
+        push(conditions, condition + ' and %s' % (query))
+      condition = join(', ', conditions)
+    @media condition
+      {block}
+  if fallback-class
+    +create-fallback-class(selected, fallback-class)
+      {block}
+
+at(scale-point, anti-overlap = rupture.anti-overlap, density = null, orientation = null, use-device-width = rupture.use-device-width, fallback-class = null)
+  if -is-string(orientation)
+    orientation = convert(orientation)
+  if -is-string(density)
+    density = convert(density)
+  +between(scale-point, scale-point, anti-overlap, density, orientation, use-device-width, fallback-class)
+    {block}
+
+from-width(scale-point, anti-overlap = rupture.anti-overlap, density = null, orientation = null, use-device-width = rupture.use-device-width, fallback-class = null)
+  if -is-string(orientation)
+    orientation = convert(orientation)
+  if -is-string(density)
+    density = convert(density)
+  +between(scale-point, length(rupture.scale), anti-overlap, density, orientation, use-device-width, fallback-class)
+    {block}
+
+above = from-width
+
+to-width(scale-point, anti-overlap = rupture.anti-overlap, density = null, orientation = null, use-device-width = rupture.use-device-width, fallback-class = null)
+  if -is-string(orientation)
+    orientation = convert(orientation)
+  if -is-string(density)
+    density = convert(density)
+  +between(1, scale-point, anti-overlap, density, orientation, use-device-width, fallback-class)
+    {block}
+
+below = to-width
+
+mobile(anti-overlap = rupture.anti-overlap, density = null, orientation = null, use-device-width = rupture.use-device-width, fallback-class = null)
+  if -is-string(orientation)
+    orientation = convert(orientation)
+  if -is-string(density)
+    density = convert(density)
+  +below(rupture.mobile-cutoff, anti-overlap, density, orientation, use-device-width, fallback-class)
+    {block}
+
+tablet(anti-overlap = rupture.anti-overlap, density = null, orientation = null, use-device-width = rupture.use-device-width, fallback-class = null)
+  if -is-string(orientation)
+    orientation = convert(orientation)
+  if -is-string(density)
+    density = convert(density)
+  +between(rupture.mobile-cutoff, rupture.desktop-cutoff, anti-overlap, density, orientation, use-device-width, fallback-class)
+    {block}
+
+desktop(anti-overlap = rupture.anti-overlap, density = null, orientation = null, use-device-width = rupture.use-device-width, fallback-class = null)
+  if -is-string(orientation)
+    orientation = convert(orientation)
+  if -is-string(density)
+    density = convert(density)
+  +above(rupture.desktop-cutoff, anti-overlap, density, orientation, use-device-width, fallback-class)
+    {block}
+
+hd(anti-overlap = rupture.anti-overlap, density = null, orientation = null, use-device-width = rupture.use-device-width, fallback-class = null)
+  if -is-string(orientation)
+    orientation = convert(orientation)
+  if -is-string(density)
+    density = convert(density)
+  +above(rupture.hd-cutoff, anti-overlap, density, orientation, use-device-width, fallback-class)
+    {block}
+
+density(density, orientation = null, fallback-class = null)
+  selected = selector()
+  if not (rupture.rasterise-media-queries)
+    conditions = ()
+    for query in -density-queries(density)
+      condition = 'only screen and %s' % (query)
+      if orientation
+        condition = condition + ' and (orientation: %s)' % (orientation)
+      push(conditions, condition)
+    condition = join(', ', conditions)
+    @media condition
+      {block}
+    if fallback-class
+      +create-fallback-class(selected, fallback-class)
+        {block}
+
+pixel-ratio = density
+
+retina(orientation = null, fallback-class = null)
+  +density('retina', orientation, fallback-class)
+    {block}
+
+landscape(density = null, fallback-class = null)
+  selected = selector()
+  if not (rupture.rasterise-media-queries)
+    if -is-string(density)
+      density = convert(density)
+    if density
+      +pixel-ratio(density, orientation: landscape, fallback-class)
+        {block}
+    else
+      @media only screen and (orientation: landscape)
+        {block}
+      if fallback-class
+        +create-fallback-class(selected, fallback-class)
+          {block}
+
+portrait(density = null, fallback-class = null)
+  selected = selector()
+  if not (rupture.rasterise-media-queries)
+    if -is-string(density)
+      density = convert(density)
+    if density
+      +pixel-ratio(density, orientation: portrait, fallback-class)
+        {block}
+    else
+      @media only screen and (orientation: portrait)
+        {block}
+      if fallback-class
+        +create-fallback-class(selected, fallback-class)
+          {block}
+
+rupture-hover(density = null, orientation = null, fallback-class = null)
+  condition = "only screen and (hover: hover)";
+  @media ({condition})
+    {block}
+
+hover = rupture-hover
+
+//rupture-end
+
+item(a,b)
+	if(a==1)
+		width 100%
+		margin-bottom: b
+		margin-right 0
+	else
+		items = a
+		margins = b
+		width "calc(1/%s*100% - (1 - 1/%s)*%s)" % (items items margins)
+		margin-right: b
+		margin-bottom: b
+		&:nth-child({a}n)
+			margin-right: 0
+
+item-clear(a,b)
+	&:nth-child({a}n)
+			margin-right: b
+
+flex(a){
+	if(a=='mid'){
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	if(a==between){
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	if(a==around){
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+}
+
+bgi(a){
+	background url('../img/'+a) no-repeat;
+}
+
+br(a){
+	border-radius a
+}
+
+tr(a){
+	transition a .4s
+} 
+
+f()
+	display flex
+fl()
+	flex-flow column
+fw()
+	flex-wrap wrap
+	
+cp()
+	&:hover
+		cursor pointer
+		
+round()
+	border-radius 50%
+bsh()
+	box-shadow 0px 3px 8px #e3e3e3
+	
+up()
+	text-transform uppercase
+	
+bold()
+	font-weight 700
+	
+placeholder(color)
+	input::-webkit-input-placeholder 
+		color:color
+	input::-moz-placeholder
+		color:color
+	input:-moz-placeholder
+		color:color
+	input:-ms-input-placeholder
+		color:color
+		
+//main cont
+center(val,pad)
+	*zoom: 1
+	width: auto
+	max-width: val
+	float: none
+	display: block
+	margin-right: auto
+	margin-left: auto
+	padding-left: 0
+	padding-right: 0
+	&:before,
+	&:after 
+		content: ''
+		display: table
+	&:after 
+		clear: both
+	position relative
+	width 100%
+	padding  0 pad
+	+above(val px)
+		width val px
+		
+// Function
+//
+//
+// Styleguide 5
+
+
+//Triangle
+//
+// triangle($direction,$size,$color)
+// 
+//Template - triangle: 'right' 13px red
+//$direction - Direction the triangle points: "up", "down", "left", or "right". Default is "up".
+//$size - Size of the triangle in pixels. Default is 10px.
+//$color - Color of the triangle. Default is black.
+//
+// Styleguide 5.1
+
+triangle($direction = 'up', $size = 10px, $color = #000)
+	width 0
+	height 0
+	if $direction == 'up'
+		border-left $size solid transparent
+		border-right $size solid transparent
+		border-bottom $size solid $color
+	else if $direction == 'down'
+		border-left $size solid transparent
+		border-right $size solid transparent
+		border-top $size solid $color
+	else if $direction == 'left'
+		border-top $size solid transparent
+		border-bottom $size solid transparent
+		border-right $size solid $color
+	else if $direction == 'right'
+		border-top $size solid transparent
+		border-bottom $size solid transparent
+		border-left $size solid $color
+
+//Gradient
+//
+//gradient($color1,$color2,$strength)
+//
+//Template - gradient: red blue 30%
+//$color1 - first color
+//$color2 - Second color
+//$strength - power color
+//
+// Styleguide 5.2
+
+gradient($color1, $color2 = null, $strength = 10%)
+	// shift args if one color mode
+	if (typeof($color2) is 'unit')
+		$strength = $color2
+		$color2 = null
+	$start = $color2 ? $color1 : lighten($color1, $strength)
+	$end = $color2 ? $color2 : darken($color1, $strength)
+	background: $start
+	background: $end linear-gradient(180deg, $start, $end) repeat-x
+
+//hover-underline
+//
+//hover-underline($border-size,$type,$color)
+//
+//Template - hover-underline: 2px dotted red
+//$border-size - How thick you want rh border to be. Default is 1px.
+//$type - Type of border you want to use. Default is solid.
+//$color - Color you want the border to be. Default is none
+//
+// Styleguide 5.3
+
+
+hover-underline($border-size = 1px, $type = 'solid', $color = null)
+	border-bottom: $border-size unquote($type) transparent
+	&:hover
+		border-bottom: $border-size unquote($type) $color
+
+//Tables
+//
+//table($border,$striped,$condensed)
+//
+//Template - table(true,true,true)
+//$border- Boolean - adds borders to the table. Default true.x.
+//$striped - Boolean - adds zebra striping to the table rows. Default true.
+//$condensed - Boolean - created a condensed table with much less extra space. Default false.
+//
+// Styleguide 5.4
+
+table($border = true, $striped = true, $condensed = false)
+	max-width: 100%
+	border-collapse: collapse
+	border-spacing: 0
+	width: 100%
+	margin-bottom: 18px
+
+	th, td
+		padding: 8px
+		line-height: 18px
+		text-align: left
+		vertical-align: top
+		border-top: 1px solid #ddd
+
+	th
+		font-weight: bold
+
+	thead th
+		vertical-align: bottom
+
+	thead:first-child tr th
+	thead:first-child tr td
+		border-top: 0
+
+	tbody + tbody
+		border-top: 2px solid #ddd
+
+	if $condensed
+		th, td
+			padding: 4px 5px
+
+	if $border
+		border: 1px solid #ddd
+		border-collapse: separate
+		*border-collapse: collapsed
+		border-radius: 4px
+
+		th + th, td + td, th + td, td + th
+			border-left: 1px solid #ddd
+
+		thead:first-child tr:first-child th
+		tbody:first-child tr:first-child th
+		tbody:first-child tr:first-child td
+			border-top: 0
+
+		thead:first-child tr:first-child th:first-child
+		tbody:first-child tr:first-child td:first-child
+			border-radius: 4px 0 0 0
+
+		thead:first-child tr:first-child th:last-child
+		tbody:first-child tr:first-child td:last-child
+			border-radius: 0 4px 0 0
+
+		thead:last-child tr:last-child th:first-child
+		tbody:last-child tr:last-child td:first-child
+			border-radius: 0 0 0 4px
+
+		thead:last-child tr:last-child th:last-child
+		tbody:last-child tr:last-child td:last-child
+			border-radius: 0 0 4px 0
+
+	if $striped
+		tbody tr:nth-child(odd) td
+		tbody tr:nth-child(odd) th
+			background-color: #f9f9f9
+
+		tbody tr:hover td
+		tbody tr:hover th
+			background-color: #f5f5f5
+
+//breadcrumb
+//
+//breadcrumb($character,$spacing,$divider-color)
+//
+//Template - breadcrumb: '~' 25px red
+//$character - The character that divides the list items. Default is '/'.
+//$spacing - How much space between each item. Default is 10px.
+//$divider-color - Color of the list item divider. Default is #CDCDCD
+//
+// Styleguide 5.5
+
+breadcrumb($character = "/", $spacing = 10px, $divider-color = #CDCDCD)
+	inline-list: $spacing
+	li:not(:last-child):after
+		content: $character
+		margin-left: $spacing
+		color: $divider-color
+
+//Size
+//
+//size $width Sheigth
+//
+//Template - size 10 20
+//$width - curent widtth
+//$height - curent height
+//
+// Styleguide 5.6
+
+size(numbers...)
+	regex = '^[^%]*%[^%]*$'
+	parsed = unit(numbers[0])
+	type = match(regex, parsed) ? '%' : 'px'
+
+	if length(numbers) > 1
+		parsedH = unit(numbers[1])
+		typeH = match(regex, parsedH) ? '%' : 'px'
+
+		width: unit(numbers[0], type)
+		height: unit(numbers[1], typeH)
+	else
+		width: unit(numbers, type)
+		height: unit(numbers, type)
+
+ul-reset()
+	ul
+		margin 0
+		padding 0
+		{block}
+
+ol-reset()
+	ol
+		margin 0
+		padding 0
+		{block}
+
+cf()
+	&:before, &:after
+		display table
+		content ""
+	&:after
+		clear both
+	.lt-ie8 &
+		zoom 1
+
+//Text elips
+//
+//ellipsis($width)
+//
+//Template - ellipsis(50px)
+//$width - Width of the container. Default is 100%
+//
+// Styleguide 5.7
+
+ellipsis($width = 100%)
+	white-space: nowrap
+	display: inline-block
+	max-width: $width
+	overflow: hidden
+	text-overflow: ellipsis
+	word-wrap: normal
+
+
+
+//Icon-arrow
+//
+//icon-arrow($direction,$size,$color,$stroke)
+//
+//Template - icon-arrow(left, 20px, blue, 3px)
+//$direction - Direction the arrow "up", "down", "left", or "right". Default is "right".
+//$size - Size of the icon. Default is 40px.
+//$color - Color of the icon. Default is #888
+//$stroke - Icon line width. Default is 1px.
+//
+// Styleguide 5.8
+
+icon-arrow($direction = 'right', $size = 40px, $color = #888, $stroke = 1px)
+	height: $size
+	width: $size
+	&:after
+		content: ''
+		border-right: $stroke solid $color
+		border-top: $stroke solid $color
+		display: block
+		height: unit($size * 0.625, 'px')
+		width: unit($size * 0.625, 'px')
+		margin-left: 1%
+		if $direction == 'right'
+			transform: rotate(45deg) translateX(unit($size * 0.1, 'px')) translateY(unit($size * 0.1, 'px'))
+		else if $direction == 'left'
+			transform: rotate(-135deg) translateX(unit($size * -0.3, 'px') ) translateY(unit($size * 0.1, 'px'))
+		else if $direction == 'down'
+			transform: rotate(135deg) translateX(unit($size * -0.1, 'px')) translateY(unit($size * -0.1, 'px'))
+		else if $direction == 'up'
+			transform: rotate(-45deg) translateX(unit($size * -0.1, 'px')) translateY(unit($size * 0.3, 'px'))
+
+
+//Icon-close
+//
+//icon-x($size,$color,$stroke)
+//
+//Template - icon-x(20px, orange, 5px)
+//$size - Size of the icon. Default is 40px.
+//$color- Color of the icon. Default is #888.
+//$stroke - Icon line width. Default is 1px.
+//
+// Styleguide 5.9
+
+icon-x($size = 40px, $color = #888, $stroke = 1px)
+	width: $size
+	height: $size
+	display: block
+	position: relative
+	&:before, &:after
+		transition: all .3s ease
+		content: ''
+		position: absolute
+		width: $size
+		top: 50%
+		height: $stroke
+		background: $color
+		transform: rotate(45deg)
+	&:after
+		transform: rotate(-45deg)
+
+//link font
+font-url(file)
+	return '../fonts/' + file
+
+webfont(family, file, hack-chrome-windows = false, weight = 'normal')
+	@font-face
+		font-family family
+		src url(font-url(file + '.eot'))
+		src url(font-url(file + '.eot?#iefix')) format('embedded-opentype'),
+			url(font-url(file + '.woff')) format('woff'), 
+			url(font-url(file + '.ttf')) format('truetype'), 
+			url(font-url(file + '.svg#'+ family)) format('svg')
+		font-weight weight
+		font-style normal
+
+//bg-full-size
+bg-full()
+	background-size cover
+	background-repeat no-repeat
+	background-position center center
+	
+focus(color)
+	&:focus
+		border-color color
+		box-shadow 0 0 3px 1px rgba(color, 0.45)

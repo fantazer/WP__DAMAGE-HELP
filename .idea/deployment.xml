@@ -26,7 +26,7 @@
       <paths name="damage-help">
         <serverdata>
           <mappings>
-            <mapping deploy="/wp-content/themes/Blue" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

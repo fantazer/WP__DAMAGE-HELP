@@ -1,29 +1,33 @@
 <div class="content__right">
 
-    <? get_search_form(); ?>
+    <? //get_search_form(); ?>
 	<!--block b-list-service-->
-	<div class="list-service">
+	<!--<div class="list-service">
 		<div class="block-header  block-header--toggle"> Наши услуги
 			<i class="icon-bars"></i>
 		</div>
 		<div class="block-content list-service__content">
-			 <?
+			 <?/*
 				$args = array(
-				'cat'=> 2,
+					'posts_per_page' => 25,
+					'tag'=> main,
+					'orderby' => 'title',
+	        'order' => 'ASC'
 				);
 				$current_post = get_the_ID();
-				query_posts($args);
-				while (have_posts()) : the_post();
-				if(get_the_ID() != $current_post){
-					printf('
-					<a href="%s" class="list-service__el">%s</a>
-					',get_permalink(),get_the_title());
-				}
-				 endwhile; 
-				 wp_reset_query();
-			 ?>
+				 $my_query = new WP_Query( $args );
+					if ( $my_query->have_posts() ) :
+					   while ( $my_query->have_posts() ) : $my_query->the_post();
+					      if(get_the_ID() != $current_post){
+									printf('
+									<a href="%s" class="list-service__el">%s</a>
+									',get_permalink(),get_the_title());
+								}
+					   endwhile;
+					endif;
+			 */?>
 		</div>
-	</div>
+	</div>-->
 	<!--block b-list-service end-->
 
 	<!--block b-adv-->
@@ -92,10 +96,10 @@
 	<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 	<script src="//yastatic.net/share2/share.js"></script>
 	<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter,blogger,whatsapp" data-counter=""></div>-->
-	<div class="awards-wrap">
-		<div class="awards" style="background-image:url('<?php echo get_template_directory_uri(); ?>/img/awards.png')">
+	<!--<div class="awards-wrap">
+		<div class="awards" style="background-image:url('<?php /*echo get_template_directory_uri(); */?>/img/awards.png')">
 		</div>
-		<div class="awards" style="background-image:url('<?php echo get_template_directory_uri(); ?>/img/awards-1.png')">
+		<div class="awards" style="background-image:url('<?php /*echo get_template_directory_uri(); */?>/img/awards-1.png')">
 		</div>
-	</div>
+	</div>-->
 </div>

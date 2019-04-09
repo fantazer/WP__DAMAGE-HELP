@@ -1,4 +1,15 @@
   <!--block footer-->
+<script type="application/ld+json">
+{ "@context": "http://schema.org",
+  "@type": "Product",
+  "name": "Invisalign",
+  "aggregateRating":
+    {"@type": "AggregateRating",
+     "ratingValue": "4.9",
+     "reviewCount": "140"
+    }
+}
+</script>
 </div><!-- =========close data-animsition -->
   <div itemscope itemtype="http://schema.org/Organization" class="hidden">
     <span itemprop="name" content="ЦЕНТР ОЦЕНКИ"></span>
@@ -23,7 +34,8 @@
         </div>
       </div>
       <div class="footer__logo">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/logo-rev.jpg" alt="Логотип независимая оценка" />
+       <!-- <img src="<?php /*echo get_template_directory_uri(); */?>/img/logo-rev.jpg" alt="Логотип независимая оценка" />-->
+        <img src="<?php echo get_template_directory_uri(); ?>/img/logo-blue.png" alt="Логотип независимая оценка" />
       </div>
       <a href="" class="footer__adress"><?php echo do_shortcode('[cvem_cv name="adres"]'); ?></a>
       <a href="" class="footer__phone"> <?php echo do_shortcode('[cvem_cv name="phone"]'); ?></a>
@@ -38,14 +50,14 @@
   <!-- Metrics -->
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
-			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-43352593-1"></script>
+<!--			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-43352593-1"></script>
 			<script>
 			  window.dataLayer = window.dataLayer || [];
 			  function gtag(){dataLayer.push(arguments);}
 			  gtag('js', new Date());
 
 			  gtag('config', 'UA-43352593-1');
-			</script>
+			</script>-->
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -87,19 +99,20 @@
 </style>
 <!-- BEGIN JIVOSITE CODE {literal} -->
 <!--<script type='text/javascript'>
-(function(){ var widget_id = 'e5vsr9w7ET';var d=document;var w=window;function l(){
+(function(){ var widget_id = 'ZS4pvvSyB5';var d=document;var w=window;function l(){
 var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>-->
 <!-- {/literal} END JIVOSITE CODE -->
 
-  
+
   <!-- Chat end-->
 
- 
-  <script src="<?php echo get_template_directory_uri(); ?>/js/combined.js"></script>
+
+  <script async src="<?php echo get_template_directory_uri(); ?>/js/combined.js"></script>
   <!--<script src="<?php /*echo get_template_directory_uri(); */?>/js/script.js"></script>-->
 
  <?php wp_footer(); ?>
    <script>(function($,d){$.each(readyQ,function(i,f){$(f)});$.each(bindReadyQ,function(i,f){$(d).bind("ready",f)})})(jQuery,document)</script>
+
  </body>
 </html>
 

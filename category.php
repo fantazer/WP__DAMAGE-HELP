@@ -98,7 +98,7 @@
                   wp_reset_query();
 
                   $key = array_search($idPost, $PostArray);
-                  $output = array_slice($PostArray, $key + 1, 4);
+                  $output = array_slice($PostArray, $key + 1, 5);
                   $LastPost = array_pop($PostArray);
 
                   $arg = array('include' => $output, 'post__not_in' => $LastPost);
@@ -134,7 +134,7 @@
                   wp_reset_query();
 
                   $key = array_search($idPost, $PostArray);
-                  $output = array_slice($PostArray, $key + 1, 4);
+                  $output = array_slice($PostArray, $key + 1, 5);
                   $LastPost = array_pop($PostArray);
 
                   $arg = array('include' => $output, 'post__not_in' => $LastPost);

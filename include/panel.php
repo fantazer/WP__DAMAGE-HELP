@@ -1,12 +1,12 @@
-<? if (in_category(array('2','3','4','5','6','7','9'))) { ?>
+<? if (in_category(array('2','3','6','9','10','11','12','13','14','15','16','18'))) { ?>
 	<div class="panel" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-		
+
 		<div class="panel__el">
 			<div class="panel__title"> Время</div>
 			<div class="panel__info">
 				<? 
 				$category = get_the_category();
-				 if(!in_category(array('7','9'))){
+				 if(!in_category(array('7','9','21'))){
 				 	echo CFS()->get('time');
 				 	} else {
 				 		echo '1-2';
@@ -28,10 +28,15 @@
 			<div class="panel__info"> <span>от</span>
 				<? 
 				$category = get_the_category();
-				 if(!in_category(array('7','9'))){
+				 if(!in_category(array('7','9','21'))){
 				 	echo CFS()->get('price');
 				 	echo ' <meta itemprop="price" content="'.CFS()->get('price').'.00">';
-				 	} else {
+				 	}
+				 	elseif(in_category(array('21'))){
+				    echo '1500';
+				 		echo ' <meta itemprop="price" content="1500.00">';
+	        }
+				 	else {
 				 		echo '4000';
 				 		echo ' <meta itemprop="price" content="4000.00">';
 				 	}
@@ -49,13 +54,17 @@
 <? } else {?>
 <div class="panel" >
 	<div class="panel__el">
-		<div class="panel__title"> Время</div>
+		<div class="panel__title"> Время!</div>
 		<div class="panel__info">
 			<? 
 			$category = get_the_category();
+			 if($category[0]->term_id==21){
+			 		echo '1-2';
+        }
 			 if($category[0]->term_id!=7){
 			 	echo CFS()->get('time');
-			 	} else {
+			 	}
+			 	else {
 			 		echo '1-2';
 			 	}
 			  ?>
@@ -76,9 +85,13 @@
 		<span>от</span>
 			<? 
 			$category = get_the_category();
-			 if(!in_category(array('7','9'))){
+			 if(!in_category(array('7','9','21'))){
 			 	echo CFS()->get('price');
-			 	} else {
+			 	}
+			 	elseif(in_category(array('21'))){
+			 		echo '1500';
+        }
+			 	else {
 			 		echo '4000';
 			 	}
 			  ?>

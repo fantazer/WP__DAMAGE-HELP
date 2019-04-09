@@ -1,24 +1,120 @@
-$blue = #0063B0
-$red = #EE3F58
+@import '_include-stylus.styl'
+
+//constant
+
+$blue = #113775
+$dark-blue = #113775
+$text-color = #7d8188
+$fontbold = 'Open Sans', sans-serif;
+//$fontbold = 'Pusia', sans-serif;
+
+//constant === end
+
+
+//TYPOGRAF
+@font-face {
+  font-family: 'Pusia';
+  src: url("../fonts/Pusia-Bold.woff2") format('woff2'), url("../fonts/Pusia-Bold.woff") format('woff');
+  font-weight: 700;
+  font-style: bold;
+}
+@font-face {
+  font-family: 'Pusia';
+  src: url("../fonts/Pusia-ExtraBold.woff2") format('woff2'), url("../fonts/Pusia-ExtraBold.woff") format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
 body
-	font-family: 'Open Sans', sans-serif!important
+	font-family: 'PT Sans', sans-serif!important;
+
 li, p
-	line-height: 1.6
-	font-size: 14px
+	line-height: 1.8!important
+	font-size: 16px
+
+p
+	margin-bottom: 30px
+
+typeSize(fontSm,font)
+	+below(768px)
+		font-size font px
+	font-size fontSm px
+
+.type--xs
+	typeSize(12,10)
+
+.type--sm
+	typeSize(14,12)
+
+.type--main
+	typeSize(16,14)
+
+.type--md
+	typeSize(18,15)
+	font-family: $fontbold
+
+.type--lg
+	typeSize(24,18)
+	font-family: $fontbold
+
+.type--xl
+	typeSize(30,20)
+	font-family: $fontbold
+.type--bold
+	font-weight bold
+
+h1
+	@extend .type--xl
+	font-family:$fontbold
+	color black
+h2
+	@extend .type--xl
+	font-family:$fontbold
+	color black
+h3
+	@extend .type--xl
+	font-family:$fontbold
+	color black
+h4
+	@extend .type--sm
+	font-family:$fontbold
+	color black
+h5
+	@extend .type--xs
+	font-family:$fontbold
+	color black
+
+
+p
+	@extend .type--main
+
+//TYPOGRAF === end
+
+.logo
+	width: 15%
+
 .section
-	padding: 40px 0
+	padding: 100px 0
+
+.section--gray
+	background: #fbfbfb
+.section--white
+	background: white
 
 .title--type
-	font-size: 28px
-	margin-bottom: 40px
+	font-size: 36px
+	margin-bottom: 60px
 	margin-top: 0
 	padding-top: 0
 	font-weight:700
+	font-family:$fontbold
+	color $dark-blue
 
 .title--mark
 	color $blue
 .sale-banner
-	margin: 20px 0 40px 0
+	margin: 20px 0 5px 0
 
 .header--white
 	background: white
@@ -118,6 +214,8 @@ strong
 .b-service__el
 	padding: 30px
 	background: white
+	border-radius 10px
+	box-shadow 0 5px 10px #f1f1f1
 	ul
 		padding-left: 20px
 		a
@@ -131,11 +229,16 @@ strong
 				width: 100%
 				height: 1px
 				background: #bebebe
+
 .b-service__el-title
-	font-size: 18px
-	margin-bottom: 20px
-	color $blue
+	font-family:$fontbold
+	font-size: 16px
+	margin-bottom: 10px
+	color black
 	font-weight:700
+	text-transform: uppercase
+	padding-bottom: 20px
+	border-bottom 1px solid #eff1f5
 
 .positive
 	background: white
@@ -145,16 +248,20 @@ strong
 	color $blue
 
 .table_price
-	margin: 30px 0
-
+	margin: 40px 0
+	br
+		display: none
 .calc__icon
 	color $blue
 
 .sytle-input-element
-	border 2px solid $red
+	border 2px solid $blue
 
 .sytle-input:checked + .sytle-input-element
-	background: $red
+	background: $blue
+
+.sytle-input
+	left -9999px
 
 .adv__el
 	i
@@ -163,24 +270,28 @@ strong
 .b-attantion
 	box-shadow none
 	border 1px solid #efefef
-	margin: 20px 0
+	margin: 40px 0
 	padding: 0 20px
-
+	border-radius 10px
 .b-attantion__text
 	font-size: 14px
 	font-style: normal
 
 .b-attantion__icon
-	color $red
+	color red
 
 .panel__get
+	+below(640px)
+		border-radius 0
 	background: $blue!important
-
+	border-radius 0 10px 10px 0
 .calc-block__get
-	background: $red
-
+	background: $blue
+	text-transform: none
+	border-radius 10px
+	padding: 15px
 .call__free
-	color $red
+	color $blue
 
 .title--mid
 	text-align: center
@@ -191,30 +302,45 @@ strong
 .how-work__el-title
 	color $blue
 	font-size: 18px
-
+	font-family:$fontbold
+	text-align: center
+	margin-bottom: 10px
 .how-work
 	display: flex
 	flex-wrap wrap
 	justify-content: space-between
-	align-items: flex-start
+	align-items: stretch
 
 .how-work__el
 	width: 32%
 	display: flex
-	justify-content: space-between
+	justify-content: flex-start
+	align-items: center
+	background: white
+	flex-flow column
+	padding: 70px 20px 50px 20px
+	br(10px)
+	bsh()
+	p
+		margin 0
+		line-height: 1.2
+		text-align: center
+		font-size: 14px
+		color $text-color
 .how-work__el-numb
-	width: 80px
-	height: 80px
-	font-size: 20px
-	border: 1px solid $blue
-	border-radius: 50%
+	width: 30px
+	height: 30px
+	font-size: 52px
 	display: flex
 	justify-content: center
 	align-items: center
 	color $blue
+	font-weight:700
+	font-family:$fontbold
+	margin-bottom: 30px
 
 .how-work__el-info
-	width:calc(100% - 100px)
+	width:calc(100% - 50px)
 
 .section-work
 	padding: 80px 0
@@ -237,7 +363,6 @@ strong
 	input,textarea
 		border 1px solid #edeaea
 
-
 .b-contact-img
 	width: 100%
 	padding: 40%
@@ -249,7 +374,6 @@ strong
 	radial-gradient(#f9f9f9 10px, #0063b0) !important
 	border-right:
 	border-raduis 10px
-	background: #e9e9e9!important
 
 .contact__phone
 	font-weight:700
@@ -257,6 +381,231 @@ strong
 article
 	.positive
 		padding: 0
+
+.attansion
+	+below(640px)
+		margin-left: -10px
+		width:calc(100% + 20px)
+		border-radius 0
+	padding: 20px
+	background: #f3f3c2
+	border-radius 10px
+	line-height: 1.4
+	margin-bottom: 30px
+
+.header--white
+	border-bottom:1px solid #eee
+
+.header-phone-link
+	font-weight:700
+	font-family $fontbold
+
+.sale-banner-text
+	font-size: 10px
+	color #bebcbc
+
+article
+	a
+		text-decoration: underline
+
+.news-wrap
+	display: grid
+	grid-gap 20px
+	grid-template-columns repeat(2,1fr);
+	margin-bottom: 30px
+.news__content
+	width: 100%
+	padding: 0
+.news__el
+	padding: 40px 30px;
+	margin-bottom: 0;
+	background: #fff;
+	bsh()
+	br(10px)
+.news__title
+	text-transform: none
+	@extend .type--md
+	color $blue
+
+.news__text
+	line-height: 1.4
+	color $text-color
+.b-service
+	grid-template-columns: repeat(3, 1fr)
+
+.metro-wraper
+	justify-content: space-between
+	margin-bottom: 30px
+	.span_h2
+		display: block
+		width: 100%
+
+.section-service
+	background: #eaecf2b3
+
+.header-nav
+	width: 35%
+
+.header__el
+	a
+		text-transform: none
+		font-weight: 700
+
+.content__left
+	width: 100%
+	.positive
+		display: none !important
+		height: 0
+		overflow: hidden
+.panel
+	+below(640px)
+		br(0)
+	border-radius 10px
+	font-weight:600
+
+.breadcrumbs
+	padding: 10px 20px
+	border-radius 10px
+	margin-bottom: 30px
+	span
+		color $blue
+
+.calc__title
+	font-weight:700
+	text-transform: none
+
+.company__lg-title
+	font-family: $fontbold
+	font-weight:700
+
+.work-teml__title
+	text-align: center
+
+.work-teml
+	max-width 800px
+	margin: 40px auto
+
+.video
+	max-width 800px
+	margin: 40px auto
+
+.section-title
+	font-weight:700
+	font-family:$fontbold
+	margin-bottom: 40px
+	text-transform: uppercase
+	font-size: 28px!important
+.section-title--mid
+	text-align: center
+
+.b-service__el-text
+	color $blue
+.b-service__el
+	ul
+		a
+			color black
+			&:before
+				background: #e3e3e3!important
+
+.shrink
+	box-shadow none
+
+.footer__nav
+	background: $blue
+
+.section-get
+	background: $blue
+	.btn
+		background: white
+		color $blue
+		font-weight:700
+
+.positive-wraper
+	max-width 800px
+	margin-left: auto
+	margin-right: auto
+.positive-el
+	flex-flow column
+	align-items: center
+	justify-content: flex-start
+	padding: 70px 30px 50px 30px
+	bsh()
+	border 0
+	br(10px)
+	.positive-el__icon
+		color $blue
+		margin-right: 0
+		margin-bottom: 20px
+		[class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after
+			font-size: 80px
+.positive-el__title
+	text-align: center
+	font-family:$fontbold
+	text-transform: none
+	font-size: 18px
+	font-weight:700
+	color $blue
+
+.positive-el__text
+	text-align: center
+	color $text-color
+	line-height: 1.6
+
+.review-el
+	border 0
+	br(10px)
+	bsh()
+	flex(between)
+	align-items: flex-start
+	padding: 50px 30px
+.review-head
+	width: 100px
+	border 0
+.review-head__img
+	margin-right: 0
+.review-content
+	width calc(100% - 140px)
+.review-head__title
+	width: 100%
+	margin-bottom: 10px
+	color $blue
+	font-family:$fontbold
+	font-size: 16px
+	font-weight: 700
+.review-content__text
+	line-height: 1.6
+	color $text-color
+
+.review-content__name
+	font-weight: 400;
+	margin-bottom: 10px;
+	padding: 4px 15px;
+	background: #eff1f5;
+	border-radius: 15px;
+	display: inline-block;
+	font-size: 12px;
+	
+.modal
+	br(10px)
+	overflow: hidden
+	.btn
+		background: #097a17
+		br(10px)
+		text-transform: none
+		font-family:$fontbold
+
+.modal-or
+	br(3px)
+	size 30px
+	top -15px
+	margin-left: -15px
+.modal-wraper
+	background:#26c839
+
+.call__number
+	font-family:$fontbold
+
+//media
 @media only screen and (max-width: 1280px)
 	.banner-main
 		background-position 30%
@@ -265,9 +614,10 @@ article
 	.how-work__el
 		width: 48%
 	.b-service
-		grid-template-columns: repeat(2, auto)
+		grid-template-columns: repeat(2, 1fr)
 		grid-gap: 20px
-
+	.news-wrap
+		grid-template-columns repeat(1,1fr);
 @media only screen and (max-width: 768px)
 	.section-work
 		padding: 30px 0
@@ -278,7 +628,7 @@ article
 		li
 			font-size: 12px
 	.b-service
-		grid-template-columns: repeat(1, auto)
+		grid-template-columns: repeat(1, 1fr)
 	.header--white
 		.header-nav
 			background: #f1f1f1

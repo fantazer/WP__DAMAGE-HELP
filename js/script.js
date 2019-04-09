@@ -178,9 +178,10 @@ $(document).ready(function(){
 					
 					},
 					submitHandler : function(form){ 
+						console.log($(form).serialize());
 						$.ajax({ //отправка ajax
 						            type: "POST",
-						            url: "/wp-content/themes/DAMAGE/sender.php",
+						            url: "/wp-content/themes/Blue/sender.php",
 						            data: $(form).serialize(),
 						            timeout: 3000,
 						          });

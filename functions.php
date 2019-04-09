@@ -1,4 +1,21 @@
 <?
+
+//acf
+
+add_filter('single_template', create_function(
+    '$the_template',
+    'foreach( (array) get_the_category() as $cat ) {
+    if ( file_exists(TEMPLATEPATH . "/single-{$cat->slug}.php") )
+      return TEMPLATEPATH . "/single-{$cat->slug}.php"; }
+    return $the_template;')
+);
+
+if (function_exists('acf_add_options_page')) {
+  acf_add_options_page();
+}
+
+
+
 remove_action('wp_head','adjacent_posts_rel_link_wp_head');
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );

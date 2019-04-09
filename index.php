@@ -1,12 +1,62 @@
 <? get_header(); ?>
 
+<?
+/*$services = array(
+  array(
+    'name' => 'Оценка после залива квартиры',
+    'title' => 'Оценка после залива квартиры в',
+    'description' => 'Оценка после залива квартиры в',
+    'content' => '[text_module id="9123"]',
+    'price' => '2500',
+    'time' => '2-4',
+  )
+);
+
+$towns = array(
+  array('name' => 'Юрлово', 'secondName' => 'Юрлово'),
+);*/
+
+/*foreach ($towns as $itemTowns) {
+  $cid = wp_insert_term(
+    "Услуги в " . $itemTowns['secondName'], // category name
+    'category', // taxonomy
+    array(
+      'description' => 'Список услуг в ' . $itemTowns['secondName'], // optional
+      'slug' => 'Список услуг в ' . $itemTowns['secondName'],
+      'parent' => 22, // set it as a sub-category
+    )
+  );
+  foreach ($services as $services_item) {
+    $title = $services_item['title'] . " " . $itemTowns['secondName'];
+    $text = $services_item['content'];
+    $post_data = array(
+      'post_title' => $title,
+      'post_content' => $text,
+      'post_status' => 'publish',
+      'post_author' => 1,
+      'post_category' => array($cid['term_id'], 22),
+    );
+    $post_id = wp_insert_post(wp_slash($post_data));
+    add_post_meta($post_id, '_aioseop_title', $services_item['title'] . " " . $itemTowns['secondName']);
+    add_post_meta($post_id, '_aioseop_description', $services_item['title'] . " " . $itemTowns['secondName'] . "  от профессионалов ЦГИКУ по приемлемым ценам. Звоните!");
+    update_post_meta($post_id, 'ratings_average', 5);
+    update_post_meta($post_id, 'ratings_score', 5);
+    update_post_meta($post_id, 'ratings_users', 5);
+    CFS()->save(array('price' => $services_item['price']), array('ID' => $post_id));
+    CFS()->save(array('time' => $services_item['time']), array('ID' => $post_id));
+    CFS()->save(array('location' => $itemTowns['name']), array('ID' => $post_id));
+  }
+}*/
+
+?>
+
 	<div class="section section-service">
 		<div class="main-cont">
 			<h1 class="title--type title--mid">Независимая оценка Залива Пожара ДТП. </h1>
 			<div class="b-service">
         <?
         //$listCat = array(13, 16, 12,11,10,15,17);
-        $listCat = array(11,10,17,16,10,13,12,15);
+        $listCat = array(11,13,17,15,10,12,16);
         foreach ($listCat as $key => $value){
         ?>
           <div class="b-service__el">
@@ -111,6 +161,14 @@
 	</div>
 	<!-- block section-get-->
 
+<div class="section section-gray">
+	<div class="main-cont">
+	<!--block b-news-->
+	<? include('include/news.php') ?>
+	<!--block b-news end-->
+
+	</div>
+</div>
 
 <? include('include/form.php') ?>
 <? get_footer(); ?>
