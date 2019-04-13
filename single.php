@@ -2,35 +2,27 @@
 
 <!-- //////////////////////////////////// -->
 
-
-
+<?
+if(in_category(array(22))) { //ID категории
+		include('single-town-list.php');
+	} else{
+?>
   <div class="content__wraper">
-
-    <!--block b-slider-->
-    <? //include('include/main-slider.php') ?>
-    <!--block b-slider end-->
-
       <div class="content__left">
-
         <!--block panel-->
         <?php
         $category = get_the_category();
         if (CFS()->get('price') != '' || $category[0]->term_id == 7 || $category[0]->term_id == 9 || $category[0]->term_id == 21): ?>
           <? include('include/panel.php') ?>
         <?php endif ?>
-
-
         <div class="breadcrumbs">
           <?php if (function_exists('kama_breadcrumbs')) kama_breadcrumbs(' > '); ?>
         </div>
         <!--block panel end-->
-
         <?
         $categories = get_the_category();
         $category_id = $categories[0]->cat_ID;
-        if ($category_id == 11) { ?>
-
-        <? } ?>
+        if ($category_id == 11) { } ?>
         
         <h1 itemprop="name"><? the_title(); ?></h1>
         <?
@@ -40,8 +32,6 @@
         endwhile;
         wp_reset_query();
         ?>
-
-
         <div itemscope itemtype="http://schema.org/Article" class="hidden">
           <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage"
                 itemid="<?php the_permalink() ?>  " content="<?php the_title(); ?>"/>
@@ -186,48 +176,10 @@
       </div>
       <? include('include/right-part.php') ?>
     </div>
-
+<? } ?>
 <? include('include/positiv.php') ?>
 <? include('include/review.php') ?>
-<!-- block section-contact-->
 <? include('include/form.php') ?>
-<!-- block section-contact-end -->
-<div class="section section-service">
-  <div class="main-cont">
-    <h3 class="section-title section-title--mid">Все виды оценок </h3>
-    <div class="b-service">
-      <?
-      //$listCat = array(13, 16, 12,11,10,15,17);
-      $listCat = array(11, 13, 17, 15, 10, 12, 16);
-      foreach ($listCat as $key => $value) {
-        ?>
-        <div class="b-service__el">
-          <div class="b-service__el-title"> <? echo get_cat_name($listCat[$key]); ?> </div>
-          <ul>
-            <?
-            $args = array(
-              'cat' => $listCat[$key]
-            );
-            ?>
-            <? query_posts($args); ?>
-            <? while (have_posts()) : the_post(); ?>
-              <!-- can write -->
-              <li class="b-service__el-text">
-                <a href=" <?= get_permalink(); ?>"><?= get_the_title(); ?></a></li>
-              <!-- can write -->
-            <? endwhile; ?>
-            <? wp_reset_query(); ?>
-          </ul>
-        </div>
-      <? } ?>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-
-
-<!-- //////////////////////////////////// -->
-
+<? include('include/allserviceList.php') ?>
 
 <?php get_footer(); ?>

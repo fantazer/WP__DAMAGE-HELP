@@ -1,4 +1,55 @@
 <?
+function porstAfter($a, $order)
+{
+	if (in_category($a)) {
+    global $post;
+    $idPost = get_the_id();
+    $PostArray = array();
+    if ($order) {
+      $args = array(
+        'cat' => $a,
+        //'orderby'=> 'title',
+        'order' => 'ASC'
+      );
+    } else {
+      $args = array(
+        'cat' => $a,
+      );
+    }
+    query_posts($args);
+    while (have_posts()) : the_post();
+      $name = get_the_id();
+      array_push($PostArray, $name);
+    endwhile;
+    wp_reset_query();
+    $key = array_search($idPost, $PostArray);
+    $output = array_slice($PostArray, $key + 1, 5);
+    $LastPost = array_pop($PostArray);
+    $postEl = array('include' => $output, 'post__not_in' => $LastPost, 'order' => 'ASC');
+    $myposts = get_posts($postEl);
+    foreach ($myposts as $post) {
+      setup_postdata($post);
+      ?>
+			<li class="list-location__el"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+      <?
+    }
+    wp_reset_postdata();
+    $needPost = 5 - (count($PostArray) - $key);
+    //echo $needPost;
+    if ($needPost < 6 && $needPost > 0) {
+      $postEl = array('cat' => $a, 'order' => 'ASC', 'posts_per_page' => $needPost);
+      $myposts = get_posts($postEl);
+      foreach ($myposts as $post) {
+        setup_postdata($post);
+        ?>
+				<li class="list-location__el"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+        <?
+      }
+    }
+    }
+}
+
+
 
 //acf
 
@@ -47,7 +98,7 @@ if(!is_admin()){
   remove_action('wp_head', 'wp_print_scripts');
   remove_action('wp_head', 'wp_print_head_scripts', 9);
   remove_action('wp_head', 'wp_enqueue_scripts', 1);
-  
+
   add_action('wp_footer', 'wp_print_scripts', 5);
   add_action('wp_footer', 'wp_enqueue_scripts', 5);
   add_action('wp_footer', 'wp_print_head_scripts', 5);

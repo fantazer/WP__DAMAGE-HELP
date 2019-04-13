@@ -30,6 +30,7 @@
             <a href="/service.php"> Услуги</a>
             <a href="/price.php"> Цены</a>
             <a href="/contact_form.php"> Контакты</a>
+            <a href="/spisok-uslug-v-gorodah"> Города</a>
           </div>
         </div>
       </div>
@@ -89,22 +90,7 @@
 
   <!-- Metrics end-->
 
-  <!-- Chat -->
 
-<!-- BEGIN JIVOSITE CODE {literal} -->
-<style type="text/css">
-  .wrap_mW._show_1e{
-    bottom: 90px !important;
-  }
-</style>
-<!-- BEGIN JIVOSITE CODE {literal} -->
-<!--<script type='text/javascript'>
-(function(){ var widget_id = 'ZS4pvvSyB5';var d=document;var w=window;function l(){
-var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>-->
-<!-- {/literal} END JIVOSITE CODE -->
-
-
-  <!-- Chat end-->
 
 
   <script async src="<?php echo get_template_directory_uri(); ?>/js/combined.js"></script>
